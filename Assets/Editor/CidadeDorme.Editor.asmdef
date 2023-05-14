@@ -1,0 +1,18 @@
+{
+    "name": "CidadeDorme.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5a3bd7931a9630746b747740908a4b5d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
