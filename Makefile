@@ -4,11 +4,11 @@ ifeq ($(IS_UNITY_PROJECT),0)
 $(error Current folder does not contain a Unity project!)
 endif
 PROJECT_NAME = $(shell grep productName $(PROJECT_SETTINGS) | sed 's/.*productName: //' | sed 's/ //g')
-CUSTOM_BUILDERS_NAMESPACE = CidadeDorme.Editor.CustomBuilders
-BUILD_ANDROID_METHOD = BuildAndroid
-BUILD_WEBGL_METHOD = BuildWebGL
 VERSION = $(shell grep bundleVersion $(PROJECT_SETTINGS) | sed 's/.*bundleVersion: //')
 UNITY_EXECUTABLE =
+CUSTOM_BUILDERS_CLASSPATH = Toblerone.Toolbox.EditorScripts.CustomBuilders
+BUILD_ANDROID_METHOD = BuildAndroid
+BUILD_WEBGL_METHOD = BuildWebGL
 BUILD_DIR = $(CURDIR)/Build
 LINUX_BUILD_DIR = $(BUILD_DIR)/Linux
 WINDOWS_BUILD_DIR = $(BUILD_DIR)/Windows
@@ -90,7 +90,7 @@ $(ANDROID_BUILD_DIR): $(BUILD_DIR)
 	@echo -e "\t WebGL build started"
 	@echo -e "\t\\-------------------/\n\n"
 	@rm -rf $(WEB_BUILD_DIR)/*
-	@$(UNITY_EXECUTABLE) -quit -projectPath $(CURDIR) -batchmode -nographics -buildTarget WebGL -executeMethod $(CUSTOM_BUILDERS_NAMESPACE).$(BUILD_WEBGL_METHOD) $(WEB_BUILD_DIR)/
+	@$(UNITY_EXECUTABLE) -quit -projectPath $(CURDIR) -batchmode -nographics -buildTarget WebGL -executeMethod $(CUSTOM_BUILDERS_CLASSPATH).$(BUILD_WEBGL_METHOD) $(WEB_BUILD_DIR)/
 	@echo -e "\n\n\t/---------------------\\"
 	@echo -e "\t WebGL build finished!"
 	@echo -e "\t\\---------------------/\n\n"
@@ -100,7 +100,7 @@ $(ANDROID_BUILD_DIR): $(BUILD_DIR)
 	@echo -e "\t Android build started"
 	@echo -e "\t\\-------------------/\n\n"
 	@rm -rf $(ANDROID_BUILD_DIR)/*
-	@$(UNITY_EXECUTABLE) -quit -projectPath $(CURDIR) -batchmode -nographics -buildTarget Android -executeMethod $(CUSTOM_BUILDERS_NAMESPACE).$(BUILD_ANDROID_METHOD) $(ANDROID_BUILD_DIR)/$(PROJECT_NAME).apk
+	@$(UNITY_EXECUTABLE) -quit -projectPath $(CURDIR) -batchmode -nographics -buildTarget Android -executeMethod $(CUSTOM_BUILDERS_CLASSPATH).$(BUILD_ANDROID_METHOD) $(ANDROID_BUILD_DIR)/$(PROJECT_NAME).apk
 	@echo -e "\n\n\t/---------------------\\"
 	@echo -e "\t Android build finished!"
 	@echo -e "\t\\---------------------/\n\n"
