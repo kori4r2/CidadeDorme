@@ -1,6 +1,6 @@
 {
     "name": "CidadeDorme.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "CidadeDorme.Editor",
     "references": [
         "GUID:5a3bd7931a9630746b747740908a4b5d"
     ],
