@@ -6,12 +6,13 @@ namespace CidadeDorme {
     public class MessageDisplay : MonoBehaviour {
         [SerializeField] private TextMeshProUGUI textField;
         [SerializeField] private GameObject rootObject;
-        [SerializeField] private StringVariable instructionVariable;
+        [SerializeField] private StringVariable messageStringVariable;
         [SerializeField] private BoolVariable isMessageVisible;
         private VariableObserver<bool> messageVisibleObserver;
         private bool isVisible = false;
 
         private void Awake() {
+            Hide();
             messageVisibleObserver = new VariableObserver<bool>(isMessageVisible, ChangeVisibility);
         }
 
@@ -26,7 +27,7 @@ namespace CidadeDorme {
         }
 
         private void Show() {
-            textField.text = instructionVariable.Value;
+            textField.text = messageStringVariable.Value;
             rootObject.SetActive(true);
         }
 

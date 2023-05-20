@@ -30,6 +30,7 @@ namespace CidadeDorme {
             if (timerVariable.Value >= 0f)
                 return;
 
+            isActive = false;
             timerUIVisible.Value = false;
             timerEndedEvent.Raise();
         }

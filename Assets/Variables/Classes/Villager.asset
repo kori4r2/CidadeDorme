@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8261cc01865ed626ea3d604b795ba155, type: 3}
+  m_Name: Villager
+  m_EditorClassIdentifier: 
+  image: {fileID: 0}
+  instructions: "Voce ganha quando nao houver mais jogadores do time dos Lobisomens
+    vivos. Durante a noite escolha alguma op\xE7ao aleatoria para ver uma mensagem
+    engra\xE7ada."
+  team: {fileID: 11400000, guid: 0b25e414098c00a34b762c7d68dff9bf, type: 2}
+  canSeeAllies: 0
+  interfacePrefab: {fileID: 0}
+  interfaceVariable: {fileID: 0}
