@@ -8,6 +8,7 @@ namespace CidadeDorme {
         [SerializeField] private TurnTimer turnTimer;
         [SerializeField] private EventSO timerEndedEvent;
         private EventListener timerEndedListener;
+        [SerializeField] private EventSO playersSetupFinishedEvent;
         // TO DO: guarantee number of players based on classes
         // TO DO: establish balancing rules for classes
         [SerializeField] private List<Player> playerList;
@@ -46,6 +47,7 @@ namespace CidadeDorme {
                 indexArray[randomNumber] = indexArray[playerClasses.Count - index - 1];
                 indexArray[playerClasses.Count - index - 1] = selectedClassIndex;
             }
+            playersSetupFinishedEvent.Raise();
         }
 
         private int[] GenerateHelperArray() {
