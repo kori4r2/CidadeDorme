@@ -6,6 +6,8 @@ namespace CidadeDorme {
     public abstract class Team : ScriptableObject, IEnumerable<Player> {
         public abstract string TeamName { get; }
         private List<Player> team = new List<Player>();
+        [SerializeField, TextArea] private string victoryText;
+        public string VictoryText => victoryText;
 
         public void Clear() {
             team.Clear();

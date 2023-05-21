@@ -9,7 +9,6 @@ namespace CidadeDorme {
         [SerializeField] private StringVariable messageStringVariable;
         [SerializeField] private BoolVariable isMessageVisible;
         private VariableObserver<bool> messageVisibleObserver;
-        private bool isVisible = false;
 
         private void Awake() {
             Hide();
@@ -17,10 +16,7 @@ namespace CidadeDorme {
         }
 
         private void ChangeVisibility(bool newVisibilityState) {
-            if (isVisible == newVisibilityState)
-                return;
-            isVisible = newVisibilityState;
-            if (isVisible)
+            if (newVisibilityState)
                 Show();
             else
                 Hide();

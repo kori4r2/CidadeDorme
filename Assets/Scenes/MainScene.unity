@@ -162,9 +162,9 @@ RectTransform:
   m_Father: {fileID: 734491113}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 86.7}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -125.4}
   m_SizeDelta: {x: 200, y: 150}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!223 &293700548
@@ -286,14 +286,9 @@ MonoBehaviour:
   teams:
   - {fileID: 11400000, guid: 0b25e414098c00a34b762c7d68dff9bf, type: 2}
   - {fileID: 11400000, guid: 40f683825cc96b61d8ac62e71fd198a1, type: 2}
-  introductionInfo: {fileID: 11400000, guid: 39ce556cadb243550887a1ca4fc37dd5, type: 2}
-  discussionInfo: {fileID: 11400000, guid: b9549cd4cd8a2c35ba82a73040a3e7bb, type: 2}
-  votingInfo: {fileID: 11400000, guid: 96078b031c7587edcbc0028845a5f56a, type: 2}
-  playerTurnInfo: {fileID: 11400000, guid: 9b03dea0f2e1bfd8bb2df97494310bdc, type: 2}
-  messageHandler:
-    defaultWaitInfo: {fileID: 11400000, guid: 75337a77f780ecaf5a5e8f66dc526997, type: 2}
-    displayMessageVariable: {fileID: 11400000, guid: 078ac2aea53685b11a3e390ba4a97119, type: 2}
-    isMessageVisible: {fileID: 11400000, guid: be5475fc498d7efb1ac0a4625faeec6f, type: 2}
+  turnWaitTimes: {fileID: 11400000, guid: 6c9a1da971ca45841bbc61c4ff422863, type: 2}
+  messageHandler: {fileID: 11400000, guid: 2632ebbcf58ec32408c6b5f0f42ac286, type: 2}
+  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

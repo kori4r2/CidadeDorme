@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331a059a3388938449ecb422608885c9, type: 3}
+  m_Name: Turn Wait Times
+  m_EditorClassIdentifier: 
+  defaultMessage: {fileID: 11400000, guid: 75337a77f780ecaf5a5e8f66dc526997, type: 2}
+  introduction: {fileID: 11400000, guid: 39ce556cadb243550887a1ca4fc37dd5, type: 2}
+  discussion: {fileID: 11400000, guid: b9549cd4cd8a2c35ba82a73040a3e7bb, type: 2}
+  voting: {fileID: 11400000, guid: 96078b031c7587edcbc0028845a5f56a, type: 2}
+  playerTurn: {fileID: 11400000, guid: 9b03dea0f2e1bfd8bb2df97494310bdc, type: 2}

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CidadeDorme {
@@ -11,17 +12,23 @@ namespace CidadeDorme {
         public Team Team => team;
         [SerializeField] private bool canSeeAllies;
         public bool CanSeeAllies => canSeeAllies;
-        [SerializeField] private PlayerTurnInterface interfacePrefab;
-        [SerializeField] private PlayerInterfaceVariable interfaceVariable;
+        [SerializeField] private PlayerTurnHandler turnHandlerPrefab;
+        [SerializeField] private PlayerTurnHandlerVariable turnHandlerVariable;
 
-        public abstract void StartTurn();
-        public abstract void ChoiceMade(int choiceIndex);
+        public void StartTurn(List<Player> playersAlive) {
+            turnHandlerVariable.Value.ShowPlayerChoices(playersAlive);
+        }
+
+        public string GetTurnResult() {
+            return turnHandlerVariable.Value.GetActionFeedback();
+        }
 
         public void SetupInterface() {
-            // if (interfaceVariable.Value != null)
-            //     return;
+            if (turnHandlerPrefab == null || turnHandlerVariable.Value != null)
+                return;
 
-            // interfaceVariable.Value = Instantiate(interfacePrefab);
+            turnHandlerVariable.Value = Instantiate(turnHandlerPrefab);
+            turnHandlerVariable.Value.Init();
         }
     }
 }
