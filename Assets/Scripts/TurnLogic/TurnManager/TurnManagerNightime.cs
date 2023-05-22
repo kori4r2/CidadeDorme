@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CidadeDorme {
@@ -40,14 +41,23 @@ namespace CidadeDorme {
 
         private void ShowCurrentPlayerChoices() {
             messageHandler.HideMessage();
+            playerList[turnIndex].PlayerClass.StartTurn(playerList[turnIndex], playersAlive);
+            StartTimer(ShowCurrentPlayerResults, turnWaitTimes.PlayerTurn);
         }
 
         private void ShowCurrentPlayerResults() {
+            string actionResult = playerList[turnIndex].PlayerClass.GetTurnResult();
+            messageHandler.ShowMessage(actionResult);
+            StartTimer(StartNextPlayerTurn, turnWaitTimes.DefaultMessage);
         }
 
         private void ShowNightResults() {
             bool gameEnded = CheckGameEnd();
-            messageHandler.ShowMorningMessage(null);
+            List<Player> deadPlayers = nightChoices.GetDeadPlayers();
+            foreach (Player deadPlayer in deadPlayers) {
+                KillPlayer(deadPlayer);
+            }
+            messageHandler.ShowMorningMessage(deadPlayers);
             if (gameEnded) {
                 StartTimer(ShowGameEndMessage, turnWaitTimes.DefaultMessage);
             } else {

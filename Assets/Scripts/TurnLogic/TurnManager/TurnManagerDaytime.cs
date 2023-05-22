@@ -41,6 +41,7 @@ namespace CidadeDorme {
                 StartTimer(ShowGameEndMessage, turnWaitTimes.DefaultMessage);
             } else {
                 turnIndex = -1;
+                nightChoices.Clear();
                 StartTimer(StartNextPlayerTurn, turnWaitTimes.DefaultMessage);
             }
         }

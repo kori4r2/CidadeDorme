@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Villager
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  instructions: "Voce ganha quando nao houver mais jogadores do time dos Lobisomens
-    vivos. Durante a noite escolha alguma op\xE7ao aleatoria para ver uma mensagem
+  instructions: "Voc\xEA ganha quando nao houver mais jogadores do time dos Lobisomens
+    vivos. Durante a noite escolha alguma op\xE7\xE3o aleat\xF3ria para ver uma mensagem
     engra\xE7ada."
   team: {fileID: 11400000, guid: 0b25e414098c00a34b762c7d68dff9bf, type: 2}
   canSeeAllies: 0
-  interfacePrefab: {fileID: 0}
-  interfaceVariable: {fileID: 0}
+  turnHandlerPrefab: {fileID: 5414203516874487904, guid: 1af9a8f92ed77ef4a9ca62209e1c92fe, type: 3}
+  turnHandlerVariable: {fileID: 11400000, guid: cb0800e202377504db96e467aeb0bea0, type: 2}

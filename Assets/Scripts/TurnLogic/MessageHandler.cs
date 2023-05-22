@@ -70,7 +70,7 @@ namespace CidadeDorme {
             ShowMessage($"Fim de jogo!\n{victoriousTeam.VictoryText}");
         }
 
-        private void ShowMessage(string messageDisplayed) {
+        public void ShowMessage(string messageDisplayed) {
             displayMessageVariable.Value = messageDisplayed;
             isMessageVisible.Value = true;
         }

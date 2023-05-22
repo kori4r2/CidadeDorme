@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e4184bac42eba84cb1e4263ef70d34a, type: 3}
-  m_Name: TimerValue
+  m_Script: {fileID: 11500000, guid: 640654336579c9e4096c6fb772b4463e, type: 3}
+  m_Name: Voting Check Ended
   m_EditorClassIdentifier: 
-  value: 0

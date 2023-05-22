@@ -18,6 +18,7 @@ namespace CidadeDorme {
         [SerializeField] private TurnWaitTimes turnWaitTimes;
         [SerializeField] private MessageHandler messageHandler;
         [SerializeField] private VotingInfo votingInfo;
+        [SerializeField] private NightChoices nightChoices;
         private UnityEvent TimerCallback = new UnityEvent();
         private bool hasValidTimerCallback = false;
         private List<Player> playersAlive = new List<Player>();

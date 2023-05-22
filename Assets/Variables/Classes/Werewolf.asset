@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Werewolf
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  instructions: Voce ganha quando o numero de jogadores do time Lobisomem for igual
-    ou maior ao numero de jogadores do time Aldeoes. Durante a noite escolha alguem
-    para que essa pessoa nao acorde mais.
+  instructions: "Voc\xEA ganha quando o n\xFAmero de jogadores do time Lobisomem
+    for igual ou maior ao n\xFAmero de jogadores do time Alde\xF5es. Durante a noite
+    escolha algu\xE9m para que essa pessoa nao acorde mais."
   team: {fileID: 11400000, guid: 40f683825cc96b61d8ac62e71fd198a1, type: 2}
   canSeeAllies: 1
-  interfacePrefab: {fileID: 0}
-  interfaceVariable: {fileID: 0}
+  turnHandlerPrefab: {fileID: 5414203516874487904, guid: 1af9a8f92ed77ef4a9ca62209e1c92fe, type: 3}
+  turnHandlerVariable: {fileID: 11400000, guid: cb0800e202377504db96e467aeb0bea0, type: 2}
