@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Toblerone.Toolbox;
 using UnityEngine;
 
 namespace CidadeDorme {
@@ -12,6 +13,7 @@ namespace CidadeDorme {
         public Team Team => team;
         [SerializeField] private bool canSeeAllies;
         public bool CanSeeAllies => canSeeAllies;
+        [SerializeField] private GameObjectVariable rootObjectReference;
         [SerializeField] private PlayerTurnHandler turnHandlerPrefab;
         [SerializeField] private PlayerTurnHandlerVariable turnHandlerVariable;
 
@@ -28,7 +30,7 @@ namespace CidadeDorme {
             if (turnHandlerPrefab == null || turnHandlerVariable.Value != null)
                 return;
 
-            turnHandlerVariable.Value = Instantiate(turnHandlerPrefab);
+            turnHandlerVariable.Value = Instantiate(turnHandlerPrefab, rootObjectReference.Value.transform);
             turnHandlerVariable.Value.Init();
         }
     }

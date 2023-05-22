@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Toblerone.Toolbox;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace CidadeDorme {
     [CreateAssetMenu(menuName = "CidadeDorme/Voting Info")]
