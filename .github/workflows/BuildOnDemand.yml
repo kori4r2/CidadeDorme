@@ -53,7 +53,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.LINUX_BUILD_NAME }}
+          name: ${{ github.event.repository.name }}_${{ env.LINUX_BUILD_NAME }}
           path: ./Build/${{ env.LINUX_BUILD_NAME }}
 
   build-and-upload-windows:
@@ -100,7 +100,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.WINDOWS_BUILD_NAME }}
+          name: ${{ github.event.repository.name }}_${{ env.WINDOWS_BUILD_NAME }}
           path: ./Build/${{ env.WINDOWS_BUILD_NAME }}
 
   build-and-upload-webgl:
@@ -147,7 +147,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.WEB_BUILD_NAME }}
+          name: ${{ github.event.repository.name }}_${{ env.WEB_BUILD_NAME }}
           path: ./Build/${{ env.WEB_BUILD_NAME }}
 
   build-and-upload-android:
@@ -197,5 +197,5 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.ANDROID_BUILD_FILENAME }}
+          name: ${{ github.event.repository.name }}_${{ env.ANDROID_BUILD_FILENAME }}
           path: ./Build/${{ env.ANDROID_BUILD_PATH }}
