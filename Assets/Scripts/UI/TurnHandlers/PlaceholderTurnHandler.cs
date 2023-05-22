@@ -16,7 +16,7 @@ namespace CidadeDorme {
         public override void Init() {
         }
 
-        public override void ShowPlayerChoices(Player currentPlayer, List<Player> playersAlive) {
+        public override void ShowPlayerChoices(Player currentPlayer) {
             this.currentPlayer = currentPlayer;
             messageHandler.ShowMessage($"Sinto muito {currentPlayer.CharacterName}, a sua interface está em outro castelo. (ação não implementada)");
         }

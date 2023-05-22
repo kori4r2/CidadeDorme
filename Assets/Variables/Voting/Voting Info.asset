@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f962601167e64b24090451f04d79b89e, type: 3}
   m_Name: Voting Info
   m_EditorClassIdentifier: 
-  votingShouldHappen: 0
+  nullPlayer: {fileID: 11400000, guid: 41cf87509487e614891b446c2724c5fc, type: 2}
   votingCheckBegan: {fileID: 11400000, guid: c15e0e3681fd3c846ae4be43466a960b, type: 2}
   votingCheckEnded: {fileID: 11400000, guid: 3d4e48371f7214447b0b6e375aa60721, type: 2}
   playerBeganVoting: {fileID: 11400000, guid: 54f79cb746df0644dbf99e972a6a8741, type: 2}

@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcb62cfb2c72783ba769d2e90b9dedc, type: 3}
   m_Name: Villagers
   m_EditorClassIdentifier: 
+  victoryText: "A cidade conseguiu descobrir todos os Lobisomens escondidos e est\xE1
+    novamente em seguran\xE7a."

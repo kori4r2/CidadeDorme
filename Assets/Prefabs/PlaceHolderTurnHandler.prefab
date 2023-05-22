@@ -49,4 +49,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reference: {fileID: 11400000, guid: cb0800e202377504db96e467aeb0bea0, type: 2}
+  playersAliveUpdated: {fileID: 11400000, guid: 1e935cb15ce0d9e409bee35d799aad17, type: 2}
   messageHandler: {fileID: 11400000, guid: 2632ebbcf58ec32408c6b5f0f42ac286, type: 2}

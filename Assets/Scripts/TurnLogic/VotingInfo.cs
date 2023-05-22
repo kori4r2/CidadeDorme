@@ -5,12 +5,12 @@ using UnityEngine;
 namespace CidadeDorme {
     [CreateAssetMenu(menuName = "CidadeDorme/Voting Info")]
     public class VotingInfo : ScriptableObject {
-        public bool votingShouldHappen;
+        public bool VotingShouldHappen { get; set; }
         private Dictionary<Player, int> voteCount;
+        [SerializeField] private Player nullPlayer;
         [SerializeField] private EventSO votingCheckBegan;
         [SerializeField] private EventSO votingCheckEnded;
         [SerializeField] private PlayerEvent playerBeganVoting;
-        [SerializeField] private PlayerListEvent playersAliveUpdated;
         [SerializeField] private EventSO playerFinishedVoting;
         private Player selectedPlayer = null;
 
@@ -24,16 +24,15 @@ namespace CidadeDorme {
 
         public void PrepareForVoting(List<Player> playersAlive) {
             voteCount = new Dictionary<Player, int>();
-            voteCount.Add(null, 0);
+            voteCount.Add(nullPlayer, 0);
             foreach (Player player in playersAlive) {
                 voteCount.Add(player, 0);
             }
-            selectedPlayer = null;
-            playersAliveUpdated.Raise(playersAlive);
+            selectedPlayer = nullPlayer;
         }
 
         public void GetPlayerVote(Player player) {
-            selectedPlayer = null;
+            selectedPlayer = nullPlayer;
             playerBeganVoting.Raise(player);
         }
 
@@ -44,11 +43,11 @@ namespace CidadeDorme {
         public void EndPlayerVote() {
             voteCount[selectedPlayer]++;
             playerFinishedVoting.Raise();
-            selectedPlayer = null;
+            selectedPlayer = nullPlayer;
         }
 
         public Player GetVoteResult() {
-            Player mostVotedPlayer = null;
+            Player mostVotedPlayer = nullPlayer;
             int highestVoteCount = -1;
 
             foreach (Player player in voteCount.Keys) {
@@ -56,11 +55,11 @@ namespace CidadeDorme {
                     highestVoteCount = voteCount[player];
                     mostVotedPlayer = player;
                 } else if (voteCount[player] == highestVoteCount) {
-                    mostVotedPlayer = null;
+                    mostVotedPlayer = nullPlayer;
                 }
             }
 
-            return mostVotedPlayer;
+            return mostVotedPlayer == nullPlayer ? null : mostVotedPlayer;
         }
     }
 }

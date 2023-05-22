@@ -4,8 +4,13 @@ using UnityEngine.Events;
 namespace CidadeDorme {
     [CreateAssetMenu(menuName = "CidadeDorme/Player")]
     public class Player : ScriptableObject {
+        private const string noName = "Ninguém";
         [SerializeField] private NameList nameList;
-        public string CharacterName { get; private set; }
+        private string characterName;
+        public string CharacterName {
+            get => nameList != null ? characterName : noName;
+            private set => characterName = value;
+        }
         public PlayerClass PlayerClass { get; private set; }
         public bool IsAlive { get; private set; }
         private UnityEvent OnDeath = new UnityEvent();

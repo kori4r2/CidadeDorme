@@ -10,6 +10,7 @@ namespace CidadeDorme {
         [SerializeField] private EventSO timerEndedEvent;
         private EventListener timerEndedListener;
         [SerializeField] private EventSO playersSetupFinishedEvent;
+        [SerializeField] private PlayerListEvent playersAliveUpdated;
         // TO DO: guarantee number of players based on classes
         // TO DO: establish balancing rules for classes
         [SerializeField] private List<Player> playerList;
@@ -56,6 +57,7 @@ namespace CidadeDorme {
             victoriousTeam = null;
             playersAlive.Clear();
             playersAlive.AddRange(playerList);
+            playersAliveUpdated.Raise(playersAlive);
             foreach (Team team in teams) {
                 team.Clear();
             }
@@ -128,6 +130,7 @@ namespace CidadeDorme {
             if (player == null)
                 return;
             playersAlive.Remove(player);
+            playersAliveUpdated.Raise(playersAlive);
             player.Kill();
         }
     }

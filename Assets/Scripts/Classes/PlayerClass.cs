@@ -17,8 +17,8 @@ namespace CidadeDorme {
         [SerializeField] private PlayerTurnHandler turnHandlerPrefab;
         [SerializeField] private PlayerTurnHandlerVariable turnHandlerVariable;
 
-        public void StartTurn(Player currentPlayer, List<Player> playersAlive) {
-            turnHandlerVariable.Value.ShowPlayerChoices(currentPlayer, playersAlive);
+        public void StartTurn(Player currentPlayer) {
+            turnHandlerVariable.Value.ShowPlayerChoices(currentPlayer);
         }
 
         public string GetTurnResult() {

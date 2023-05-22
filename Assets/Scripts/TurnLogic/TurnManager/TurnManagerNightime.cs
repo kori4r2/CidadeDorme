@@ -29,7 +29,6 @@ namespace CidadeDorme {
             foreach (Player player in playerList) {
                 player.HideClass();
             }
-            turnIndex++;
             CalculateNewTurnIndex();
             if (turnIndex >= playerList.Count) {
                 ShowNightResults();
@@ -41,7 +40,8 @@ namespace CidadeDorme {
 
         private void ShowCurrentPlayerChoices() {
             messageHandler.HideMessage();
-            playerList[turnIndex].PlayerClass.StartTurn(playerList[turnIndex], playersAlive);
+            ShowVisibleClasses(playerList[turnIndex]);
+            playerList[turnIndex].PlayerClass.StartTurn(playerList[turnIndex]);
             StartTimer(ShowCurrentPlayerResults, turnWaitTimes.PlayerTurn);
         }
 

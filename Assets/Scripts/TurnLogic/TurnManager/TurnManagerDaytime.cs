@@ -12,7 +12,8 @@ namespace CidadeDorme {
             messageHandler.HideMessage();
             votingInfo.EndVotingCheck();
             turnIndex = -1;
-            if (votingInfo.votingShouldHappen) {
+            if (votingInfo.VotingShouldHappen) {
+                votingInfo.PrepareForVoting(playersAlive);
                 StartNextPlayerVote();
             } else {
                 StartNextPlayerTurn();
@@ -22,7 +23,6 @@ namespace CidadeDorme {
         private void StartNextPlayerVote() {
             if (turnIndex > -1)
                 votingInfo.EndPlayerVote();
-            turnIndex++;
             CalculateNewTurnIndex();
             if (turnIndex >= playerList.Count) {
                 ShowVoteResults();
