@@ -11,7 +11,8 @@ namespace CidadeDorme {
         }
 
         public void AttackPlayer(Player player) {
-            playersAttacked.Add(player);
+            if (player != null)
+                playersAttacked.Add(player);
         }
 
         public List<Player> GetDeadPlayers() {

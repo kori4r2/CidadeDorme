@@ -10,7 +10,7 @@ namespace CidadeDorme {
         [SerializeField] private EventSO timerEndedEvent;
         private EventListener timerEndedListener;
         [SerializeField] private EventSO playersSetupFinishedEvent;
-        [SerializeField] private PlayerListEvent playersAliveUpdated;
+        [SerializeField] private PlayerListVariable playersAliveVariable;
         // TO DO: guarantee number of players based on classes
         // TO DO: establish balancing rules for classes
         [SerializeField] private List<Player> playerList;
@@ -22,11 +22,11 @@ namespace CidadeDorme {
         [SerializeField] private NightChoices nightChoices;
         private UnityEvent TimerCallback = new UnityEvent();
         private bool hasValidTimerCallback = false;
-        private List<Player> playersAlive = new List<Player>();
         private int turnIndex = 0;
         private Team victoriousTeam = null;
 
         private void Awake() {
+            playersAliveVariable.Value = new List<Player>();
             messageHandler.Init();
             timerEndedListener = new EventListener(timerEndedEvent, InvokeTimerCallbackOnce);
         }
@@ -55,9 +55,8 @@ namespace CidadeDorme {
 
         public void StartGame() {
             victoriousTeam = null;
-            playersAlive.Clear();
-            playersAlive.AddRange(playerList);
-            playersAliveUpdated.Raise(playersAlive);
+            playersAliveVariable.Value.Clear();
+            playersAliveVariable.Value.AddRange(playerList);
             foreach (Team team in teams) {
                 team.Clear();
             }
@@ -111,7 +110,7 @@ namespace CidadeDorme {
 
         private bool CheckGameEnd() {
             foreach (Team team in teams) {
-                if (team.CheckVictory(playersAlive)) {
+                if (team.CheckVictory(playersAliveVariable.Value)) {
                     victoriousTeam = team;
                     return true;
                 }
@@ -129,8 +128,7 @@ namespace CidadeDorme {
         private void KillPlayer(Player player) {
             if (player == null)
                 return;
-            playersAlive.Remove(player);
-            playersAliveUpdated.Raise(playersAlive);
+            playersAliveVariable.Value.Remove(player);
             player.Kill();
         }
     }

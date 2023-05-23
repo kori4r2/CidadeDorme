@@ -273,8 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 6949840844380513838}
-  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
   playerName: {fileID: 1371591210948245464}
+  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
 --- !u!114 &3963495032793781289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,8 +615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 4217395874370161509}
-  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
   playerName: {fileID: 1342985203282739211}
+  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
 --- !u!114 &6406239259107893661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   votingCheckBegan: {fileID: 11400000, guid: c15e0e3681fd3c846ae4be43466a960b, type: 2}
   votingCheckEnded: {fileID: 11400000, guid: 3d4e48371f7214447b0b6e375aa60721, type: 2}
   playerBeganVoting: {fileID: 11400000, guid: 54f79cb746df0644dbf99e972a6a8741, type: 2}
-  playersAliveUpdated: {fileID: 11400000, guid: 1e935cb15ce0d9e409bee35d799aad17, type: 2}
+  playersAliveVariable: {fileID: 11400000, guid: 4df4fd17ec73bba4781cec092daa9c5f, type: 2}
   playerFinishedVoting: {fileID: 11400000, guid: 8aedf527470ee20428b68485ffc37569, type: 2}
   voteCheckRootObject: {fileID: 2453596814826022899}
   voteCheckButtons:
@@ -1600,8 +1600,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 6682832585080771440}
-  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
   playerName: {fileID: 7984308559348310419}
+  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
 --- !u!114 &7491748081951211379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1817,8 +1817,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1782051285733022263}
-  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
   playerName: {fileID: 2170131082143838068}
+  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
 --- !u!114 &7083650554803920508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2494,8 +2494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 3390800850524847161}
-  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
   playerName: {fileID: 5706034191993034785}
+  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
 --- !u!114 &8122798739248448259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2711,8 +2711,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1396531031812772639}
-  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
   playerName: {fileID: 6546253723441132235}
+  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
 --- !u!114 &108151795043348876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3062,8 +3062,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 4038688945731832278}
-  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
   playerName: {fileID: 2097710146787985104}
+  votingInfo: {fileID: 11400000, guid: e10ef3b0343e0bf4c810a80f9e418177, type: 2}
 --- !u!114 &62043363824180112
 MonoBehaviour:
   m_ObjectHideFlags: 0

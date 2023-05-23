@@ -14,8 +14,7 @@ namespace CidadeDorme {
         private EventListener votingCheckEndedListener;
         [SerializeField] private PlayerEvent playerBeganVoting;
         private GenericEventListener<Player> playerBeganVotingListener;
-        [SerializeField] private PlayerListEvent playersAliveUpdated;
-        private GenericEventListener<List<Player>> playersAliveUpdatedListener;
+        [SerializeField] private PlayerListVariable playersAliveVariable;
         [SerializeField] private EventSO playerFinishedVoting;
         private EventListener playerFinishedVotingListener;
 
@@ -28,7 +27,6 @@ namespace CidadeDorme {
         [SerializeField] private GameObject voteOptionsRootObject;
         [SerializeField] private TextMeshProUGUI prompt;
         [SerializeField] private List<VoteButton> voteOptionsButtons;
-        private List<Player> playersAlive = new List<Player>();
 
         private void Awake() {
             HideAllUI();
@@ -36,7 +34,6 @@ namespace CidadeDorme {
             votingCheckEndedListener = new EventListener(votingCheckEnded, HideAllUI);
             playerBeganVotingListener = new GenericEventListener<Player>(playerBeganVoting, SetupPlayerVote);
             playerFinishedVotingListener = new EventListener(playerFinishedVoting, HideAllUI);
-            playersAliveUpdatedListener = new GenericEventListener<List<Player>>(playersAliveUpdated, newList => playersAlive = new List<Player>(newList));
         }
 
         private void HideAllUI() {
@@ -61,8 +58,8 @@ namespace CidadeDorme {
             prompt.text = $"Em quem {votingPlayer.CharacterName} vota?";
             voteOptionsButtons[0].ActivateButton(nullPlayer);
             for (int index = 1; index < voteOptionsButtons.Count; index++) {
-                if (index <= playersAlive.Count) {
-                    voteOptionsButtons[index].ActivateButton(playersAlive[index - 1]);
+                if (index <= playersAliveVariable.Value.Count) {
+                    voteOptionsButtons[index].ActivateButton(playersAliveVariable.Value[index - 1]);
                 } else {
                     voteOptionsButtons[index].DeactivateButton();
                 }
@@ -87,7 +84,6 @@ namespace CidadeDorme {
             votingCheckEndedListener.StartListeningEvent();
             playerBeganVotingListener.StartListeningEvent();
             playerFinishedVotingListener.StartListeningEvent();
-            playersAliveUpdatedListener.StartListeningEvent();
         }
 
         private void OnDisable() {
@@ -95,7 +91,6 @@ namespace CidadeDorme {
             votingCheckEndedListener.StopListeningEvent();
             playerBeganVotingListener.StopListeningEvent();
             playerFinishedVotingListener.StopListeningEvent();
-            playersAliveUpdatedListener.StopListeningEvent();
         }
     }
 }

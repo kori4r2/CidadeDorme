@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a80b5dfe5129264abf5d8c5751573b2, type: 3}
-  m_Name: Root Game Object
+  m_Script: {fileID: 11500000, guid: ebaac47f24eb30049992e1c0aa9bafab, type: 3}
+  m_Name: Players Alive
   m_EditorClassIdentifier: 
-  value: {fileID: 0}
+  value: []

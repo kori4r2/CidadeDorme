@@ -13,7 +13,7 @@ namespace CidadeDorme {
             votingInfo.EndVotingCheck();
             turnIndex = -1;
             if (votingInfo.VotingShouldHappen) {
-                votingInfo.PrepareForVoting(playersAlive);
+                votingInfo.PrepareForVoting(playersAliveVariable.Value);
                 StartNextPlayerVote();
             } else {
                 StartNextPlayerTurn();

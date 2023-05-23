@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a67d64f12f7e8b4a849ff16b26d8f81, type: 3}
-  m_Name: Players Alive Updated
+  m_Script: {fileID: 11500000, guid: a12d1f7a3e298f7a9ae4713905b640c3, type: 3}
+  m_Name: Werewolf Turn Handler Variable
   m_EditorClassIdentifier: 
-  debugValue: []
+  value: {fileID: 0}

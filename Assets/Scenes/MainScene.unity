@@ -269,7 +269,7 @@ MonoBehaviour:
   turnTimer: {fileID: 441274974}
   timerEndedEvent: {fileID: 11400000, guid: 49af1a7a2aa7a06299406ec943b876b6, type: 2}
   playersSetupFinishedEvent: {fileID: 11400000, guid: 36b4c2fd96ab5f14faf6eccfb1156e4e, type: 2}
-  playersAliveUpdated: {fileID: 11400000, guid: 1e935cb15ce0d9e409bee35d799aad17, type: 2}
+  playersAliveVariable: {fileID: 11400000, guid: 4df4fd17ec73bba4781cec092daa9c5f, type: 2}
   playerList:
   - {fileID: 11400000, guid: 28fc3a78be60279399d0fb59b66a0248, type: 2}
   - {fileID: 11400000, guid: c0419ef2200fae9b59d8d79b09e9512d, type: 2}
@@ -1773,6 +1773,10 @@ PrefabInstance:
     - target: {fileID: 2453596815173943915, guid: aa0fd58e23cf52f4493345d39a084667, type: 3}
       propertyPath: m_Name
       value: VotingInterface
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453596815173943915, guid: aa0fd58e23cf52f4493345d39a084667, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4134096496447947480, guid: aa0fd58e23cf52f4493345d39a084667, type: 3}
       propertyPath: m_AnchorMax.y

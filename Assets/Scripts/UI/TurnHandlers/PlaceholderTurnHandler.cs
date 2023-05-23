@@ -1,9 +1,12 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CidadeDorme {
     public class PlaceholderTurnHandler : PlayerTurnHandler {
         [SerializeField] private MessageHandler messageHandler;
+
+        protected override bool IsValidActionTarget(Player target) {
+            return true;
+        }
 
         public override string GetActionFeedback() {
             return $"{currentPlayer.CharacterName} teve uma boa noite de sono. (ação não implementada)";
