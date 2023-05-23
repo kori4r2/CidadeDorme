@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CidadeDorme {
     [CreateAssetMenu(menuName = "CidadeDorme/Name List")]
     public class NameList : ScriptableObject {
-        [SerializeField] private List<string> nameList = new List<string>() { "Rafael", "Fabiane", "Tiago", "Júlia", "Gabriel", "Aline", "Guilherme", "Maria", "Arthur", "Caroline", "Cris", "Luca", "Rafa" };
+        [SerializeField] private List<string> nameList = new List<string>() { "Vitor", "Fabiane", "Tiago", "Júlia", "Gabriel", "Aline", "Guilherme", "Maria", "Arthur", "Caroline", "Cris", "Luca", "Rafa" };
         private List<string> nameListCopy;
 
         private void OnEnable() {
