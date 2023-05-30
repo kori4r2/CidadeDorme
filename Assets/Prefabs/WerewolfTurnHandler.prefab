@@ -2777,6 +2777,7 @@ MonoBehaviour:
   - {fileID: 5708096048630625396}
   - {fileID: 5708096049110653438}
   nightChoices: {fileID: 11400000, guid: 0f9a609fba0bab648bac1d0f43a4fdbe, type: 2}
+  dreamGenerator: {fileID: 11400000, guid: 8d9092d710fcb10258e9f8540bb03ff0, type: 2}
   targetReference: {fileID: 11400000, guid: 445a409547823b04585c177c994e290e, type: 2}
   rootObject: {fileID: 5708096050410414588}
   prompt: {fileID: 5708096049216985285}

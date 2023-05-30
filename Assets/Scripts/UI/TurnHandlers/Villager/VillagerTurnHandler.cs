@@ -2,8 +2,7 @@ using TMPro;
 using UnityEngine;
 
 namespace CidadeDorme {
-    public class SeerTurnHandler : PlayerTurnHandler {
-        [SerializeField] private PlayerVariable targetReference;
+    public class VillagerTurnHandler : PlayerTurnHandler {
         [SerializeField] private DreamGenerator dreamGenerator;
         [SerializeField] private GameObject rootObject;
         [SerializeField] private TextMeshProUGUI prompt;
@@ -13,13 +12,7 @@ namespace CidadeDorme {
         }
 
         public override string GetActionFeedback() {
-            Player targetSelected = targetReference.Value == nullPlayer ? null : targetReference.Value;
-            if (targetSelected != null)
-                targetSelected.ShowClass();
-            string targetString = targetSelected != null
-                ? $"{currentPlayer.CharacterName} escolheu observar a casa de {targetSelected.CharacterName} antes de voltar a dormir."
-                : $"{currentPlayer.CharacterName} escolheu dormir sem observar ninguém.";
-            return $"{targetString}\n{dreamGenerator.GetDreamResult(currentPlayer)}";
+            return dreamGenerator.GetDreamResult(currentPlayer);
         }
 
         public override void Hide() {
@@ -33,7 +26,7 @@ namespace CidadeDorme {
         public override void ShowPlayerChoices(Player currentPlayer) {
             this.currentPlayer = currentPlayer;
             rootObject.SetActive(true);
-            prompt.text = $"Quem {currentPlayer.CharacterName} escolhe observar esta noite?";
+            prompt.text = dreamGenerator.GetDreamQuestion(currentPlayer);
             SetupVoteButtons();
         }
     }

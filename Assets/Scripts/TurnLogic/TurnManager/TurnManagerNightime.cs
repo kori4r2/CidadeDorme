@@ -15,7 +15,7 @@ namespace CidadeDorme {
             }
 
             messageHandler.ShowNextPlayerMessage(playerList[turnIndex], false);
-            StartTimer(CurrentPlayerIntroduction, turnWaitTimes.Introduction);
+            StartTimer(CurrentPlayerIntroduction, turnWaitTimes.DefaultMessage);
         }
 
         private void CurrentPlayerIntroduction() {
@@ -34,7 +34,7 @@ namespace CidadeDorme {
                 ShowNightResults();
             } else {
                 messageHandler.ShowNextPlayerMessage(playerList[turnIndex], true);
-                StartTimer(ShowCurrentPlayerChoices, turnWaitTimes.Introduction);
+                StartTimer(ShowCurrentPlayerChoices, turnWaitTimes.DefaultMessage);
             }
         }
 

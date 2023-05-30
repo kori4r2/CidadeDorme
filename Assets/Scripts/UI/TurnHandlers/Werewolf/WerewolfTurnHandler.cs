@@ -4,6 +4,7 @@ using UnityEngine;
 namespace CidadeDorme {
     public class WerewolfTurnHandler : PlayerTurnHandler {
         [SerializeField] private NightChoices nightChoices;
+        [SerializeField] private DreamGenerator dreamGenerator;
         [SerializeField] private PlayerVariable targetReference;
         [SerializeField] private GameObject rootObject;
         [SerializeField] private TextMeshProUGUI prompt;
@@ -15,9 +16,10 @@ namespace CidadeDorme {
         public override string GetActionFeedback() {
             Player targetSelected = targetReference.Value == nullPlayer ? null : targetReference.Value;
             nightChoices.AttackPlayer(targetSelected);
-            return targetSelected != null
+            string targetString = targetSelected != null
                 ? $"{currentPlayer.CharacterName} escolheu atacar {targetSelected.CharacterName} antes de voltar a dormir."
                 : $"{currentPlayer.CharacterName} escolheu dormir sem atacar ninguém.";
+            return $"{targetString}\n{dreamGenerator.GetDreamResult(currentPlayer)}";
         }
 
         public override void Hide() {
