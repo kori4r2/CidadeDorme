@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 293700547}
   - component: {fileID: 293700548}
   - component: {fileID: 293700549}
+  - component: {fileID: 293700550}
   m_Layer: 5
   m_Name: DebugElements
   m_TagString: Untagged
@@ -205,6 +206,35 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &293700550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293700546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01cc9e22fe03b7438054ad6a2c0dcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventListeners:
+  - eventListened: {fileID: 11400000, guid: 82fc360c7ccc16aaa84fec8a1bdb1437, type: 2}
+    eventCallback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1250283709}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &441274972
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +299,7 @@ MonoBehaviour:
   turnTimer: {fileID: 441274974}
   timerEndedEvent: {fileID: 11400000, guid: 49af1a7a2aa7a06299406ec943b876b6, type: 2}
   playersSetupFinishedEvent: {fileID: 11400000, guid: 36b4c2fd96ab5f14faf6eccfb1156e4e, type: 2}
+  gameEndedEvent: {fileID: 11400000, guid: 82fc360c7ccc16aaa84fec8a1bdb1437, type: 2}
   playersAliveVariable: {fileID: 11400000, guid: 4df4fd17ec73bba4781cec092daa9c5f, type: 2}
   playerList:
   - {fileID: 11400000, guid: 28fc3a78be60279399d0fb59b66a0248, type: 2}
@@ -584,6 +615,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CidadeDorme.TurnManager, CidadeDorme
         m_MethodName: StartGame
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1250283709}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

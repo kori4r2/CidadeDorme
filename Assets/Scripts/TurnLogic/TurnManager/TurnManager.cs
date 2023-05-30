@@ -10,6 +10,7 @@ namespace CidadeDorme {
         [SerializeField] private EventSO timerEndedEvent;
         private EventListener timerEndedListener;
         [SerializeField] private EventSO playersSetupFinishedEvent;
+        [SerializeField] private EventSO gameEndedEvent;
         [SerializeField] private PlayerListVariable playersAliveVariable;
         // TO DO: guarantee number of players based on classes
         // TO DO: establish balancing rules for classes
@@ -123,6 +124,7 @@ namespace CidadeDorme {
                 player.ShowClass();
             }
             messageHandler.ShowVictoryMessage(victoriousTeam);
+            gameEndedEvent.Raise();
         }
 
         private void KillPlayer(Player player) {
