@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Villager
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  instructions: "Voc\xEA ganha quando nao houver mais jogadores do time dos Lobisomens
+  instructions: "Voc\xEA ganha quando n\xE3o houver mais jogadores do time dos Lobisomens
     vivos. Durante a noite escolha alguma op\xE7\xE3o aleat\xF3ria para ver uma mensagem
     engra\xE7ada."
   team: {fileID: 11400000, guid: 0b25e414098c00a34b762c7d68dff9bf, type: 2}

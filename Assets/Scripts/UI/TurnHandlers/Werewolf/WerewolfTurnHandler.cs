@@ -8,6 +8,7 @@ namespace CidadeDorme {
         [SerializeField] private PlayerVariable targetReference;
         [SerializeField] private GameObject rootObject;
         [SerializeField] private TextMeshProUGUI prompt;
+        [SerializeField] private TextMeshProUGUI currentVoteText;
 
         protected override bool IsValidActionTarget(Player target) {
             return !(target.PlayerClass.Team is WerewolvesTeam);
@@ -15,7 +16,7 @@ namespace CidadeDorme {
 
         public override string GetActionFeedback() {
             Player targetSelected = targetReference.Value == nullPlayer ? null : targetReference.Value;
-            nightChoices.AttackPlayer(targetSelected);
+            nightChoices.CastWerewolfVote(targetSelected);
             string targetString = targetSelected != null
                 ? $"{currentPlayer.CharacterName} escolheu atacar {targetSelected.CharacterName} antes de voltar a dormir."
                 : $"{currentPlayer.CharacterName} escolheu dormir sem atacar ninguém.";
@@ -33,7 +34,8 @@ namespace CidadeDorme {
         public override void ShowPlayerChoices(Player currentPlayer) {
             this.currentPlayer = currentPlayer;
             rootObject.SetActive(true);
-            prompt.text = $"Quem {currentPlayer.CharacterName} ataca esta noite?";
+            prompt.text = $"Quem {currentPlayer.CharacterName} deseja atacar esta noite?";
+            currentVoteText.text = nightChoices.GetWerewolfVotesString();
             SetupVoteButtons();
         }
     }

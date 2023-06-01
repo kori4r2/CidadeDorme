@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   instructions: "Voc\xEA ganha quando o n\xFAmero de jogadores do time Lobisomem
-    for igual ou maior ao n\xFAmero de jogadores do time Alde\xF5es. Durante a noite
-    escolha algu\xE9m para que essa pessoa nao acorde mais."
+    for igual ou maior ao n\xFAmero de jogadores do time Alde\xF5es. Voc\xEA pode acordar
+    junto com outras pessoas do seu time. Durante a noite vote em algu\xE9m para
+    que essa pessoa nao acorde mais."
   team: {fileID: 11400000, guid: 40f683825cc96b61d8ac62e71fd198a1, type: 2}
   canSeeAllies: 1
   rootObjectReference: {fileID: 11400000, guid: c82c5a6fe1c2fac40b3553f377d8adc1, type: 2}

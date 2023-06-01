@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 
 namespace CidadeDorme {
-    // TO DO: mayber refactor the class into more subclasses
+    // TO DO: maybe refactor the class into more subclasses
     public partial class TurnManager : MonoBehaviour {
         [SerializeField] private TurnTimer turnTimer;
         [SerializeField] private EventSO timerEndedEvent;

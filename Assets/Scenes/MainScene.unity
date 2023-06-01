@@ -310,8 +310,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5c79023560b8e0908af3c7c8d54c8b9, type: 2}
   playerClasses:
   - {fileID: 11400000, guid: 9c949f78c05cd3604858d9cb953817e2, type: 2}
+  - {fileID: 11400000, guid: 9c949f78c05cd3604858d9cb953817e2, type: 2}
   - {fileID: 11400000, guid: e44efc85411d16db6ae4a127a91a4597, type: 2}
-  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
   - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
   - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
   - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
