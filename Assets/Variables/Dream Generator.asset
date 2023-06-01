@@ -20,18 +20,18 @@ MonoBehaviour:
   - unicórnios
   - abacates
   femaleNouns:
+  - baratas
+  - "ma\xE7ãs"
+  - "inven\xE7ões"
+  - visões
+  - missões
+  maleAdjectives:
   - bobos
   - calvos
   - loucos
   - falsos
   - azedos
   - honestos
-  maleAdjectives:
-  - baratas
-  - "ma\xE7ãs"
-  - "inven\xE7ões"
-  - visões
-  - missões
   femaleAdjectives:
   - voadoras
   - alucinantes
