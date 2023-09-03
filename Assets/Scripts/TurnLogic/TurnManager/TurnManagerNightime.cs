@@ -5,7 +5,7 @@ namespace CidadeDorme {
     public partial class TurnManager : MonoBehaviour {
         private void StartNextPlayerIntroduction() {
             foreach (Player player in playerList) {
-                player.HideClass();
+                player.HideInfo();
             }
             turnIndex++;
             if (turnIndex >= playerList.Count) {
@@ -21,13 +21,13 @@ namespace CidadeDorme {
         private void CurrentPlayerIntroduction() {
             Player player = playerList[turnIndex];
             messageHandler.ShowPlayerIntroduction(player);
-            ShowVisibleClasses(player);
+            ShowVisibleAllies(player);
             StartTimer(StartNextPlayerIntroduction, turnWaitTimes.Introduction);
         }
 
         private void StartNextPlayerTurn() {
             foreach (Player player in playerList) {
-                player.HideClass();
+                player.HideInfo();
             }
             CalculateNewTurnIndex();
             if (turnIndex >= playerList.Count) {
@@ -40,7 +40,7 @@ namespace CidadeDorme {
 
         private void ShowCurrentPlayerChoices() {
             messageHandler.HideMessage();
-            ShowVisibleClasses(playerList[turnIndex]);
+            ShowVisibleAllies(playerList[turnIndex]);
             playerList[turnIndex].PlayerClass.StartTurn(playerList[turnIndex]);
             StartTimer(ShowCurrentPlayerResults, turnWaitTimes.PlayerTurn);
         }

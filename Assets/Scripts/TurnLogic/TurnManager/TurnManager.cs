@@ -6,17 +6,22 @@ using System.Collections.Generic;
 namespace CidadeDorme {
     // TO DO: maybe refactor the class into more subclasses
     public partial class TurnManager : MonoBehaviour {
+        [Header("References")]
         [SerializeField] private TurnTimer turnTimer;
         [SerializeField] private EventSO timerEndedEvent;
         private EventListener timerEndedListener;
         [SerializeField] private EventSO playersSetupFinishedEvent;
+        [SerializeField] private EventSO gameStartedEvent;
+        private EventListener gameStartedListener;
         [SerializeField] private EventSO gameEndedEvent;
         [SerializeField] private PlayerListVariable playersAliveVariable;
         // TO DO: guarantee number of players based on classes
         // TO DO: establish balancing rules for classes
-        [SerializeField] private List<Player> playerList;
-        [SerializeField] private List<PlayerClass> playerClasses;
-        [SerializeField] private List<Team> teams;
+        [Header("Match Settings")]
+        [SerializeField] private MatchSettings matchSettings;
+        private List<Player> playerList;
+        private List<PlayerClass> playerClasses;
+        private List<Team> teams;
         [SerializeField] private TurnWaitTimes turnWaitTimes;
         [SerializeField] private MessageHandler messageHandler;
         [SerializeField] private VotingInfo votingInfo;
@@ -30,6 +35,7 @@ namespace CidadeDorme {
             playersAliveVariable.Value = new List<Player>();
             messageHandler.Init();
             timerEndedListener = new EventListener(timerEndedEvent, InvokeTimerCallbackOnce);
+            gameStartedListener = new EventListener(gameStartedEvent, StartGame);
         }
 
         private void InvokeTimerCallbackOnce() {
@@ -41,10 +47,12 @@ namespace CidadeDorme {
 
         private void OnEnable() {
             timerEndedListener.StartListeningEvent();
+            gameStartedListener.StartListeningEvent();
         }
 
         private void OnDisable() {
             timerEndedListener.StopListeningEvent();
+            gameStartedListener.StopListeningEvent();
         }
 
         private void StartTimer(UnityAction callback, TurnWaitInfo turnInfo) {
@@ -55,6 +63,7 @@ namespace CidadeDorme {
         }
 
         public void StartGame() {
+            LoadSettings();
             victoriousTeam = null;
             playersAliveVariable.Value.Clear();
             playersAliveVariable.Value.AddRange(playerList);
@@ -68,6 +77,12 @@ namespace CidadeDorme {
             turnIndex = -1;
             messageHandler.ShowClassList(playerClasses);
             StartTimer(StartNextPlayerIntroduction, turnWaitTimes.Introduction);
+        }
+
+        private void LoadSettings() {
+            playerList = matchSettings.AllPlayers;
+            playerClasses = matchSettings.AvailableClasses;
+            teams = matchSettings.Teams;
         }
 
         private void GiveClassesToPlayers() {
@@ -92,13 +107,16 @@ namespace CidadeDorme {
             return indexArray;
         }
 
-        private static void ShowVisibleClasses(Player player) {
+        private static void ShowVisibleAllies(Player player) {
             if (!player.PlayerClass.CanSeeAllies) {
                 player.ShowClass();
                 return;
             }
             foreach (Player ally in player.PlayerClass.Team) {
-                ally.ShowClass();
+                if (ally == player)
+                    ally.ShowClass();
+                else
+                    ally.ShowTeam();
             }
         }
 

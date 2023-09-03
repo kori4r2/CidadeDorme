@@ -15,6 +15,7 @@ namespace CidadeDorme {
         public bool IsAlive { get; private set; }
         private UnityEvent OnDeath = new UnityEvent();
         private UnityEvent<bool> OnChangeClassVisibility = new UnityEvent<bool>();
+        private UnityEvent<bool> OnChangeTeamVisibility = new UnityEvent<bool>();
 
         public void SetupPlayer(PlayerClass playerClass) {
             PlayerClass = playerClass;
@@ -24,11 +25,13 @@ namespace CidadeDorme {
             CharacterName = nameList.GetNewName();
         }
 
-        public void WatchPlayer(UnityAction onDeath, UnityAction<bool> onChangeClassVisibility) {
+        public void WatchPlayer(UnityAction onDeath, UnityAction<bool> onChangeClassVisibility, UnityAction<bool> onChangeTeamVisibility) {
             if (onDeath != null)
                 OnDeath.AddListener(onDeath);
             if (onChangeClassVisibility != null)
                 OnChangeClassVisibility.AddListener(onChangeClassVisibility);
+            if (onChangeTeamVisibility != null)
+                OnChangeTeamVisibility.AddListener(onChangeTeamVisibility);
         }
 
         public void Kill() {
@@ -36,12 +39,17 @@ namespace CidadeDorme {
             OnDeath?.Invoke();
         }
 
-        public void HideClass() {
+        public void HideInfo() {
             OnChangeClassVisibility?.Invoke(false);
+            OnChangeTeamVisibility?.Invoke(false);
         }
 
         public void ShowClass() {
             OnChangeClassVisibility?.Invoke(true);
+        }
+
+        public void ShowTeam() {
+            OnChangeTeamVisibility?.Invoke(true);
         }
     }
 }
