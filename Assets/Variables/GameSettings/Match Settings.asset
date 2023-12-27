@@ -29,3 +29,7 @@ MonoBehaviour:
   teams:
   - {fileID: 11400000, guid: 0b25e414098c00a34b762c7d68dff9bf, type: 2}
   - {fileID: 11400000, guid: 40f683825cc96b61d8ac62e71fd198a1, type: 2}
+  minPlayerCount: 6
+  maxPlayerCount: 9
+  minBalanceValue: -2
+  maxBalanceValue: 2

@@ -5,6 +5,7 @@ using UnityEngine;
 namespace CidadeDorme {
     public abstract class Team : ScriptableObject, IEnumerable<Player> {
         public abstract string TeamName { get; }
+        public abstract int ClassWeightModifier { get; }
         private List<Player> team = new List<Player>();
         [SerializeField, TextArea] private string victoryText;
         public string VictoryText => victoryText;

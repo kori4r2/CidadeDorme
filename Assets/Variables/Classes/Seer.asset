@@ -16,6 +16,7 @@ MonoBehaviour:
   instructions: "Voc\xEA ganha quando n\xE3o houver mais jogadores do time dos Lobisomens
     vivos. Durante a noite escolha algu\xE9m e descubra a classe dessa pessoa."
   team: {fileID: 11400000, guid: 0b25e414098c00a34b762c7d68dff9bf, type: 2}
+  balanceWeight: 7
   canSeeAllies: 0
   rootObjectReference: {fileID: 11400000, guid: c82c5a6fe1c2fac40b3553f377d8adc1, type: 2}
   turnHandlerPrefab: {fileID: 3242999224309487816, guid: b741dd357d1539d83b56490b5365b2c3, type: 3}
