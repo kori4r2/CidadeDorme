@@ -18,21 +18,32 @@ namespace CidadeDorme {
         }
 
         private void StartWatchingPlayer() {
+            if (!watchedPlayer.IsPlaying) {
+                gameObject.SetActive(false);
+                return;
+            }
+            gameObject.SetActive(true);
             playerName.text = watchedPlayer.CharacterName;
             playerClass.text = hiddenClassString;
             overlay.SetActive(false);
         }
 
         private void KillPlayer() {
+            if (!watchedPlayer.IsPlaying)
+                return;
             overlay.SetActive(true);
             playerName.text = $"<s>{watchedPlayer.CharacterName}</s>";
         }
 
         private void ChangeClassVisibility(bool isVisible) {
+            if (!watchedPlayer.IsPlaying)
+                return;
             playerClass.text = isVisible ? watchedPlayer.PlayerClass.ClassName : hiddenClassString;
         }
 
         private void ChangeTeamVisibility(bool isVisible) {
+            if (!watchedPlayer.IsPlaying)
+                return;
             playerClass.text = isVisible ? watchedPlayer.PlayerClass.Team.TeamName : hiddenClassString;
         }
 

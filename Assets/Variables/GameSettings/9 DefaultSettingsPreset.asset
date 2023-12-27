@@ -10,22 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 102f6073328857b4b91d05de838e52b8, type: 3}
-  m_Name: DefaultSettingsPreset
+  m_Name: 9 DefaultSettingsPreset
   m_EditorClassIdentifier: 
-  allPlayers:
-  - {fileID: 11400000, guid: 28fc3a78be60279399d0fb59b66a0248, type: 2}
-  - {fileID: 11400000, guid: c0419ef2200fae9b59d8d79b09e9512d, type: 2}
-  - {fileID: 11400000, guid: 462277022c5a63e2d86fce0f87708f08, type: 2}
-  - {fileID: 11400000, guid: ffd0d3fe4c9b5d89d97f53b6fad3df49, type: 2}
-  - {fileID: 11400000, guid: e2bb10290c8d0dc7ba180abbbe25741f, type: 2}
-  - {fileID: 11400000, guid: b5c79023560b8e0908af3c7c8d54c8b9, type: 2}
   availableClasses:
   - {fileID: 11400000, guid: 9c949f78c05cd3604858d9cb953817e2, type: 2}
   - {fileID: 11400000, guid: 9c949f78c05cd3604858d9cb953817e2, type: 2}
+  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
+  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
+  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
+  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
+  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
+  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
   - {fileID: 11400000, guid: e44efc85411d16db6ae4a127a91a4597, type: 2}
-  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
-  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
-  - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
   teams:
   - {fileID: 11400000, guid: 0b25e414098c00a34b762c7d68dff9bf, type: 2}
   - {fileID: 11400000, guid: 40f683825cc96b61d8ac62e71fd198a1, type: 2}

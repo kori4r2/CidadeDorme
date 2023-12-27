@@ -66,7 +66,6 @@ namespace CidadeDorme {
             LoadSettings();
             victoriousTeam = null;
             playersAliveVariable.Value.Clear();
-            playersAliveVariable.Value.AddRange(playerList);
             foreach (Team team in teams) {
                 team.Clear();
             }
@@ -87,16 +86,26 @@ namespace CidadeDorme {
 
         private void GiveClassesToPlayers() {
             int[] indexArray = GenerateHelperArray();
-            for (int index = 0; index < playerClasses.Count; index++) {
-                int randomNumber = Random.Range(0, playerClasses.Count - index);
-                int selectedClassIndex = indexArray[randomNumber];
-
-                playerList[index].SetupPlayer(playerClasses[selectedClassIndex]);
-
-                indexArray[randomNumber] = indexArray[playerClasses.Count - index - 1];
-                indexArray[playerClasses.Count - index - 1] = selectedClassIndex;
+            for (int index = 0; index < playerList.Count; index++) {
+                if (index < playerClasses.Count) {
+                    GiveRandomClassToPlayer(indexArray, index);
+                } else {
+                    playerList[index].IsPlaying = false;
+                }
             }
             playersSetupFinishedEvent.Raise();
+        }
+
+        private void GiveRandomClassToPlayer(int[] indexArray, int index) {
+            playersAliveVariable.Value.Add(playerList[index]);
+            int randomNumber = Random.Range(0, playerClasses.Count - index);
+            int selectedClassIndex = indexArray[randomNumber];
+
+            playerList[index].SetupPlayer(playerClasses[selectedClassIndex]);
+            playerList[index].IsPlaying = true;
+
+            indexArray[randomNumber] = indexArray[playerClasses.Count - index - 1];
+            indexArray[playerClasses.Count - index - 1] = selectedClassIndex;
         }
 
         private int[] GenerateHelperArray() {
@@ -122,7 +131,7 @@ namespace CidadeDorme {
 
         private void CalculateNewTurnIndex() {
             turnIndex++;
-            while (turnIndex < playerList.Count && !playerList[turnIndex].IsAlive) {
+            while (turnIndex < playerClasses.Count && !playerList[turnIndex].IsAlive) {
                 turnIndex++;
             }
         }

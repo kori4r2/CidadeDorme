@@ -49,8 +49,6 @@ namespace CidadeDorme {
 
         public void LoadPreset(MatchSettingsPreset preset) {
             classes.Clear();
-            allPlayers.Clear();
-            allPlayers.AddRange(preset.AllPlayers);
             availableClasses.Clear();
             availableClasses.AddRange(preset.AvailableClasses);
             teams.Clear();
@@ -71,7 +69,7 @@ namespace CidadeDorme {
         }
 
         public bool CanAddClass(PlayerClass playerClass) {
-            if (allPlayers.Count >= maxPlayerCount)
+            if (availableClasses.Count >= maxPlayerCount)
                 return false;
             int newBalanceWeight = GetCurrentClassesWeight() + playerClass.BalanceWeight;
             return minBalanceValue <= newBalanceWeight && newBalanceWeight <= maxBalanceValue;

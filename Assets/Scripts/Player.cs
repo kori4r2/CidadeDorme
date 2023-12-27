@@ -13,6 +13,7 @@ namespace CidadeDorme {
         }
         public PlayerClass PlayerClass { get; private set; }
         public bool IsAlive { get; private set; }
+        public bool IsPlaying { get; set; }
         private UnityEvent OnDeath = new UnityEvent();
         private UnityEvent<bool> OnChangeClassVisibility = new UnityEvent<bool>();
         private UnityEvent<bool> OnChangeTeamVisibility = new UnityEvent<bool>();

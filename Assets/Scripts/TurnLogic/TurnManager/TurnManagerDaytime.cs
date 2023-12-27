@@ -24,7 +24,7 @@ namespace CidadeDorme {
             if (turnIndex > -1)
                 votingInfo.EndPlayerVote();
             CalculateNewTurnIndex();
-            if (turnIndex >= playerList.Count) {
+            if (turnIndex >= playerClasses.Count) {
                 ShowVoteResults();
             } else {
                 votingInfo.GetPlayerVote(playerList[turnIndex]);

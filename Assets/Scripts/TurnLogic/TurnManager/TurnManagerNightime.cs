@@ -8,7 +8,7 @@ namespace CidadeDorme {
                 player.HideInfo();
             }
             turnIndex++;
-            if (turnIndex >= playerList.Count) {
+            if (turnIndex >= playerClasses.Count) {
                 messageHandler.ShowMorningMessage(null);
                 StartTimer(StartDiscussion, turnWaitTimes.DefaultMessage);
                 return;
@@ -30,7 +30,7 @@ namespace CidadeDorme {
                 player.HideInfo();
             }
             CalculateNewTurnIndex();
-            if (turnIndex >= playerList.Count) {
+            if (turnIndex >= playerClasses.Count) {
                 ShowNightResults();
             } else {
                 messageHandler.ShowNextPlayerMessage(playerList[turnIndex], true);
