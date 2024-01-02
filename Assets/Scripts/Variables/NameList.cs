@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace CidadeDorme {
@@ -8,8 +11,20 @@ namespace CidadeDorme {
         private List<string> nameListCopy;
 
         private void OnEnable() {
+#if UNITY_EDITOR
+            EditorApplication.playModeStateChanged += ResetNameListCopyOnPlayModeStart;
+#endif
             ResetNameListCopy();
         }
+
+#if UNITY_EDITOR
+        private void ResetNameListCopyOnPlayModeStart(PlayModeStateChange newState) {
+            if (newState != PlayModeStateChange.EnteredPlayMode)
+                return;
+            Debug.Log("Name list has been reset");
+            ResetNameListCopy();
+        }
+#endif
 
         [ContextMenu("Reset Name List Copy")]
         private void ResetNameListCopy() {
