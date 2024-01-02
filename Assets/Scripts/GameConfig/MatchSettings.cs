@@ -76,7 +76,7 @@ namespace CidadeDorme {
         }
 
         public bool CanRemoveClass(PlayerClass playerClass) {
-            if (!classes.ContainsKey(playerClass) || classes[playerClass] <= 0)
+            if (!classes.ContainsKey(playerClass) || classes[playerClass] <= playerClass.MinPlayerCount)
                 return false;
             int newBalanceWeight = GetCurrentClassesWeight() - playerClass.BalanceWeight;
             return minBalanceValue <= newBalanceWeight && newBalanceWeight <= maxBalanceValue;

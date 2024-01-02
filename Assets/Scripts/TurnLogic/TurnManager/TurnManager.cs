@@ -15,8 +15,6 @@ namespace CidadeDorme {
         private EventListener gameStartedListener;
         [SerializeField] private EventSO gameEndedEvent;
         [SerializeField] private PlayerListVariable playersAliveVariable;
-        // TO DO: guarantee number of players based on classes
-        // TO DO: establish balancing rules for classes
         [Header("Match Settings")]
         [SerializeField] private MatchSettings matchSettings;
         private List<Player> playerList;

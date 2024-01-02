@@ -17,6 +17,8 @@ MonoBehaviour:
     vivos. Durante a noite escolha alguma op\xE7\xE3o aleat\xF3ria para ver uma mensagem
     engra\xE7ada."
   team: {fileID: 11400000, guid: 0b25e414098c00a34b762c7d68dff9bf, type: 2}
+  balanceWeight: 1
+  minPlayerCount: 2
   canSeeAllies: 0
   rootObjectReference: {fileID: 11400000, guid: c82c5a6fe1c2fac40b3553f377d8adc1, type: 2}
   turnHandlerPrefab: {fileID: 3475828139579720637, guid: f2f0f45befd136a2581a16954ea7c067, type: 3}

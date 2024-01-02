@@ -12,6 +12,8 @@ namespace CidadeDorme {
         public Team Team => team;
         [Range(0, 10), SerializeField] private int balanceWeight = 1;
         public int BalanceWeight => balanceWeight * team.ClassWeightModifier;
+        [Range(0, 9), SerializeField] private int minPlayerCount = 0;
+        public int MinPlayerCount => minPlayerCount;
         [SerializeField] private bool canSeeAllies;
         public bool CanSeeAllies => canSeeAllies;
         [SerializeField] private GameObjectVariable rootObjectReference;
