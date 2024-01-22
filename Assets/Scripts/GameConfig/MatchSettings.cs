@@ -20,7 +20,9 @@ namespace CidadeDorme {
         [SerializeField, Range(4, 9)] private int minPlayerCount = 4;
         [SerializeField, Range(4, 9)] private int maxPlayerCount = 4;
         [SerializeField, Range(-5, 5)] private int minBalanceValue = -2;
+        public int MinBalanceValue => minBalanceValue;
         [SerializeField, Range(-5, 5)] private int maxBalanceValue = 2;
+        public int MaxBalanceValue => maxBalanceValue;
 
         public int GetClassCount(PlayerClass playerClass) {
             return classes.ContainsKey(playerClass) ? classes[playerClass] : 0;
@@ -48,6 +50,8 @@ namespace CidadeDorme {
         }
 
         public void LoadPreset(MatchSettingsPreset preset) {
+            if (preset == null)
+                return;
             classes.Clear();
             availableClasses.Clear();
             availableClasses.AddRange(preset.AvailableClasses);
@@ -71,18 +75,20 @@ namespace CidadeDorme {
         public bool CanAddClass(PlayerClass playerClass) {
             if (availableClasses.Count >= maxPlayerCount)
                 return false;
-            int newBalanceWeight = GetCurrentClassesWeight() + playerClass.BalanceWeight;
-            return minBalanceValue <= newBalanceWeight && newBalanceWeight <= maxBalanceValue;
+            // int newBalanceWeight = GetCurrentClassesWeight() + playerClass.BalanceWeight;
+            // return minBalanceValue <= newBalanceWeight && newBalanceWeight <= maxBalanceValue;
+            return true;
         }
 
         public bool CanRemoveClass(PlayerClass playerClass) {
             if (!classes.ContainsKey(playerClass) || classes[playerClass] <= playerClass.MinPlayerCount)
                 return false;
-            int newBalanceWeight = GetCurrentClassesWeight() - playerClass.BalanceWeight;
-            return minBalanceValue <= newBalanceWeight && newBalanceWeight <= maxBalanceValue;
+            // int newBalanceWeight = GetCurrentClassesWeight() - playerClass.BalanceWeight;
+            // return minBalanceValue <= newBalanceWeight && newBalanceWeight <= maxBalanceValue;
+            return true;
         }
 
-        private int GetCurrentClassesWeight() {
+        public int GetCurrentClassesWeight() {
             int weight = 0;
             foreach (PlayerClass playerClass in availableClasses) {
                 weight += playerClass.BalanceWeight;

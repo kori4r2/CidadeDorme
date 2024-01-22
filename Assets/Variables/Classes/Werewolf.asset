@@ -16,7 +16,7 @@ MonoBehaviour:
   instructions: "Voc\xEA ganha quando o n\xFAmero de jogadores do time Lobisomem
     for igual ou maior ao n\xFAmero de jogadores do time Alde\xF5es. Voc\xEA pode
     acordar junto com outras pessoas do seu time. Durante a noite vote em algu\xE9m
-    para que essa pessoa nao acorde mais."
+    para que essa pessoa nao acorde mais (1 morte por noite)."
   team: {fileID: 11400000, guid: 40f683825cc96b61d8ac62e71fd198a1, type: 2}
   balanceWeight: 6
   minPlayerCount: 1

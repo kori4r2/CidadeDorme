@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102f6073328857b4b91d05de838e52b8, type: 3}
   m_Name: 6 DefaultSettingsPreset
   m_EditorClassIdentifier: 
+  displayName: "Padr\xE3o 6 Jogadores"
   availableClasses:
   - {fileID: 11400000, guid: 9c949f78c05cd3604858d9cb953817e2, type: 2}
   - {fileID: 11400000, guid: 974a545f1376bee0da5ba6f9b858c88a, type: 2}
