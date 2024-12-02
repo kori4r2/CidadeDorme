@@ -16,7 +16,7 @@ jobs:
       contains(github.event.inputs.targets, 'linux'))
     name: Generate And Upload Linux Build Files
     runs-on: ubuntu-latest
-    container: unityci/editor:ubuntu-2020.3.11f1-base-0.15.0
+    container: unityci/editor:ubuntu-2020.3.11f1-base-3.1.0
     env:
       DOTNET_ROOT: "/opt/unity/Editor/Data/NetCore/Sdk-2.2.107"
 
@@ -63,7 +63,7 @@ jobs:
       contains(github.event.inputs.targets, 'windows'))
     name: Generate And Upload Windows Build Files
     runs-on: ubuntu-latest
-    container: unityci/editor:ubuntu-2020.3.11f1-windows-mono-0.15.0
+    container: unityci/editor:ubuntu-2020.3.11f1-windows-mono-3.1.0
     env:
       DOTNET_ROOT: "/opt/unity/Editor/Data/NetCore/Sdk-2.2.107"
 
@@ -110,7 +110,7 @@ jobs:
       contains(github.event.inputs.targets, 'web'))
     name: Generate And Upload WebGL Build Files
     runs-on: ubuntu-latest
-    container: unityci/editor:ubuntu-2020.3.11f1-webgl-0.15.0
+    container: unityci/editor:ubuntu-2020.3.11f1-webgl-3.1.0
     env:
       DOTNET_ROOT: "/opt/unity/Editor/Data/NetCore/Sdk-2.2.107"
 
@@ -157,7 +157,7 @@ jobs:
       contains(github.event.inputs.targets, 'android'))
     name: Generate And Upload Android Build Files
     runs-on: ubuntu-latest
-    container: unityci/editor:ubuntu-2020.3.11f1-android-0.15.0
+    container: unityci/editor:ubuntu-2020.3.11f1-android-3.1.0
     env:
       DOTNET_ROOT: "/opt/unity/Editor/Data/NetCore/Sdk-2.2.107"
 
