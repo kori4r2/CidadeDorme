@@ -4,12 +4,12 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 
 namespace CidadeDorme {
-    // TO DO: maybe refactor the class into more subclasses
     public partial class TurnManager : MonoBehaviour {
-        [Header("References")]
-        [SerializeField] private TurnTimer turnTimer;
+        [Header("Timer")]
         [SerializeField] private EventSO timerEndedEvent;
         private EventListener timerEndedListener;
+        [SerializeField] private TurnTimer turnTimer;
+        [Header("References")]
         [SerializeField] private EventSO playersSetupFinishedEvent;
         [SerializeField] private EventSO gameStartedEvent;
         private EventListener gameStartedListener;
@@ -26,8 +26,8 @@ namespace CidadeDorme {
         [SerializeField] private NightChoices nightChoices;
         private UnityEvent TimerCallback = new UnityEvent();
         private bool hasValidTimerCallback = false;
-        private int turnIndex = 0;
         private Team victoriousTeam = null;
+        private PlayerQueue playerQueue;
 
         private void Awake() {
             playersAliveVariable.Value = new List<Player>();
@@ -53,11 +53,15 @@ namespace CidadeDorme {
             gameStartedListener.StopListeningEvent();
         }
 
+        private void Update() {
+            turnTimer.Update();
+        }
+
         private void StartTimer(UnityAction callback, TurnWaitInfo turnInfo) {
             TimerCallback.RemoveAllListeners();
             TimerCallback.AddListener(callback);
             hasValidTimerCallback = true;
-            turnTimer.StartTimer(turnInfo.Duration, turnInfo.Thresold);
+            turnTimer.StartTimer(turnInfo);
         }
 
         public void StartGame() {
@@ -68,10 +72,10 @@ namespace CidadeDorme {
                 team.Clear();
             }
             GiveClassesToPlayers();
+            playerQueue = new PlayerQueue(playerList);
             foreach (PlayerClass playerClass in playerClasses) {
                 playerClass.SetupInterface();
             }
-            turnIndex = -1;
             messageHandler.ShowClassList(playerClasses);
             StartTimer(StartNextPlayerIntroduction, turnWaitTimes.Introduction);
         }
@@ -94,6 +98,14 @@ namespace CidadeDorme {
             playersSetupFinishedEvent.Raise();
         }
 
+        private int[] GenerateHelperArray() {
+            int[] indexArray = new int[playerClasses.Count];
+            for (int index = 0; index < playerClasses.Count; index++) {
+                indexArray[index] = index;
+            }
+            return indexArray;
+        }
+
         private void GiveRandomClassToPlayer(int[] indexArray, int index) {
             playersAliveVariable.Value.Add(playerList[index]);
             int randomNumber = Random.Range(0, playerClasses.Count - index);
@@ -106,14 +118,6 @@ namespace CidadeDorme {
             indexArray[playerClasses.Count - index - 1] = selectedClassIndex;
         }
 
-        private int[] GenerateHelperArray() {
-            int[] indexArray = new int[playerClasses.Count];
-            for (int index = 0; index < playerClasses.Count; index++) {
-                indexArray[index] = index;
-            }
-            return indexArray;
-        }
-
         private static void ShowVisibleAllies(Player player) {
             if (!player.PlayerClass.CanSeeAllies) {
                 player.ShowClass();
@@ -124,13 +128,6 @@ namespace CidadeDorme {
                     ally.ShowClass();
                 else
                     ally.ShowTeam();
-            }
-        }
-
-        private void CalculateNewTurnIndex() {
-            turnIndex++;
-            while (turnIndex < playerClasses.Count && !playerList[turnIndex].IsAlive) {
-                turnIndex++;
             }
         }
 
@@ -157,6 +154,114 @@ namespace CidadeDorme {
                 return;
             playersAliveVariable.Value.Remove(player);
             player.Kill();
+        }
+
+        // Day
+
+        private void StartDiscussion() {
+            messageHandler.ShowDiscussionMessage();
+            votingInfo.BeginVotingCheck();
+            StartTimer(CheckNeedForAVote, turnWaitTimes.Discussion);
+        }
+
+        private void CheckNeedForAVote() {
+            messageHandler.HideMessage();
+            votingInfo.EndVotingCheck();
+            playerQueue.ResetQueue();
+            if (votingInfo.VotingShouldHappen) {
+                votingInfo.PrepareForVoting(playersAliveVariable.Value);
+                StartNextPlayerVote(true);
+            } else {
+                StartNextPlayerTurn();
+            }
+        }
+
+        private void StartNextPlayerVote(bool isFirst = false) {
+            if (!isFirst)
+                votingInfo.EndPlayerVote();
+            if (playerQueue.IsEmpty) {
+                ShowVoteResults();
+            } else {
+                votingInfo.GetPlayerVote(playerQueue.Dequeue());
+                StartTimer(() => StartNextPlayerVote(), turnWaitTimes.Voting);
+            }
+        }
+
+        private void ShowVoteResults() {
+            Player votedPlayer = votingInfo.GetVoteResult();
+            KillPlayer(votedPlayer);
+            bool gameEnded = CheckGameEnd();
+            messageHandler.ShowVoteResult(votedPlayer, gameEnded);
+            if (gameEnded) {
+                StartTimer(ShowGameEndMessage, turnWaitTimes.DefaultMessage);
+            } else {
+                playerQueue.ResetQueue();
+                nightChoices.Clear();
+                StartTimer(StartNextPlayerTurn, turnWaitTimes.DefaultMessage);
+            }
+        }
+
+        // Night
+
+        private void StartNextPlayerIntroduction() {
+            foreach (Player player in playerList) {
+                player.HideInfo();
+            }
+            if (playerQueue.IsEmpty) {
+                messageHandler.ShowMorningMessage(null);
+                StartTimer(StartDiscussion, turnWaitTimes.DefaultMessage);
+                return;
+            }
+
+            Player nextPlayer = playerQueue.Dequeue();
+            messageHandler.ShowNextPlayerMessage(nextPlayer, false);
+            StartTimer(() => CurrentPlayerIntroduction(nextPlayer), turnWaitTimes.DefaultMessage);
+        }
+
+        private void CurrentPlayerIntroduction(Player player) {
+            messageHandler.ShowPlayerIntroduction(player);
+            ShowVisibleAllies(player);
+            StartTimer(StartNextPlayerIntroduction, turnWaitTimes.Introduction);
+        }
+
+        private void StartNextPlayerTurn() {
+            foreach (Player player in playerList) {
+                player.HideInfo();
+            }
+            if (playerQueue.IsEmpty) {
+                ShowNightResults();
+            } else {
+                Player nextPlayer = playerQueue.Dequeue();
+                messageHandler.ShowNextPlayerMessage(nextPlayer, true);
+                StartTimer(() => ShowCurrentPlayerChoices(nextPlayer), turnWaitTimes.DefaultMessage);
+            }
+        }
+
+        private void ShowCurrentPlayerChoices(Player player) {
+            messageHandler.HideMessage();
+            ShowVisibleAllies(player);
+            player.PlayerClass.StartTurn(player);
+            StartTimer(() => ShowCurrentPlayerResults(player), turnWaitTimes.PlayerTurn);
+        }
+
+        private void ShowCurrentPlayerResults(Player player) {
+            string actionResult = player.PlayerClass.GetTurnResult();
+            messageHandler.ShowMessage(actionResult);
+            StartTimer(StartNextPlayerTurn, turnWaitTimes.DefaultMessage);
+        }
+
+        private void ShowNightResults() {
+            List<Player> deadPlayers = nightChoices.GetDeadPlayers();
+            foreach (Player deadPlayer in deadPlayers) {
+                KillPlayer(deadPlayer);
+            }
+            messageHandler.ShowMorningMessage(deadPlayers);
+            bool gameEnded = CheckGameEnd();
+            if (gameEnded) {
+                StartTimer(ShowGameEndMessage, turnWaitTimes.DefaultMessage);
+            } else {
+                StartTimer(StartDiscussion, turnWaitTimes.DefaultMessage);
+            }
         }
     }
 }

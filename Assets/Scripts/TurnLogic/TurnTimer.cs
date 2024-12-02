@@ -2,27 +2,26 @@ using UnityEngine;
 using Toblerone.Toolbox;
 
 namespace CidadeDorme {
-    public class TurnTimer : MonoBehaviour {
+    [CreateAssetMenu(menuName = "CidadeDorme/Turn Timer")]
+    public class TurnTimer : ScriptableObject {
         [SerializeField] private FloatVariable timerVariable;
         [SerializeField] private FloatVariable maxTimerVariable;
         [SerializeField] private FloatVariable hurryThresholdVariable;
         [SerializeField] private BoolVariable timerUIVisible;
+        [SerializeField] private EventSO startTimerEvent;
         [SerializeField] private EventSO timerEndedEvent;
         private bool isActive = false;
 
-        public void DebugStartTimer() {
-            StartTimer(maxTimerVariable.Value, hurryThresholdVariable.Value);
-        }
-
-        public void StartTimer(float maxTime, float hurryThreshold) {
-            maxTimerVariable.Value = maxTime;
-            timerVariable.Value = maxTime;
-            hurryThresholdVariable.Value = hurryThreshold;
+        public void StartTimer(TurnWaitInfo turnWaitInfo) {
+            maxTimerVariable.Value = turnWaitInfo.Duration;
+            hurryThresholdVariable.Value = turnWaitInfo.Thresold;
+            timerVariable.Value = maxTimerVariable.Value;
             timerUIVisible.Value = true;
             isActive = true;
+            startTimerEvent.Raise();
         }
 
-        private void Update() {
+        public void Update() {
             if (!isActive)
                 return;
 

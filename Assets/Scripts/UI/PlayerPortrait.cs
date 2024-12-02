@@ -14,6 +14,7 @@ namespace CidadeDorme {
 
         private void Awake() {
             playerSetupListener = new EventListener(playersSetupFinished, StartWatchingPlayer);
+            playerSetupListener.StartListeningEvent();
             watchedPlayer.WatchPlayer(KillPlayer, ChangeClassVisibility, ChangeTeamVisibility);
         }
 
@@ -47,11 +48,7 @@ namespace CidadeDorme {
             playerClass.text = isVisible ? watchedPlayer.PlayerClass.Team.TeamName : hiddenClassString;
         }
 
-        private void OnEnable() {
-            playerSetupListener.StartListeningEvent();
-        }
-
-        private void OnDisable() {
+        private void OnDestroy() {
             playerSetupListener.StopListeningEvent();
         }
     }

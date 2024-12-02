@@ -7,7 +7,7 @@ namespace CidadeDorme {
         [SerializeField] private Sprite image;
         public Sprite Image => image;
         [SerializeField, TextArea] private string instructions;
-        public string Instructions => string.IsNullOrWhiteSpace(instructions) ? string.Empty : $"\n{instructions}";
+        public string Instructions => string.IsNullOrWhiteSpace(instructions) ? string.Empty : instructions;
         [SerializeField] Team team;
         public Team Team => team;
         [Range(0, 10), SerializeField] private int balanceWeight = 1;

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caca33d094c1ec66b83c8263024f2cca, type: 3}
+  m_Name: Turn Timer
+  m_EditorClassIdentifier: 
+  timerVariable: {fileID: 11400000, guid: 581eb9c6bd81c47f18fd478db1c4eaa5, type: 2}
+  maxTimerVariable: {fileID: 11400000, guid: bc61c671e3dab3a089f20e9a9cb8fc1c, type: 2}
+  hurryThresholdVariable: {fileID: 11400000, guid: 5585f8ac13a52837baabc184400f3103, type: 2}
+  timerUIVisible: {fileID: 11400000, guid: 679d0f540f7d6a9e78da9ae97b96d0da, type: 2}
+  startTimerEvent: {fileID: 11400000, guid: d04e646890809af0498de4e1139d2fc4, type: 2}
+  timerEndedEvent: {fileID: 11400000, guid: 49af1a7a2aa7a06299406ec943b876b6, type: 2}
