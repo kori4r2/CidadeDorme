@@ -37,11 +37,11 @@ jobs:
           unity-editor -nographics -logFile /dev/stdout -manualLicenseFile UnityLicenseFile.ulf -quit | echo "Activation finished"
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache Library
         id: cache-library
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: Library
           key: Library-2020.3.11-linux
@@ -51,7 +51,7 @@ jobs:
           make linux UNITY_EXECUTABLE=unity-editor
           echo "LINUX_BUILD_NAME=Linux" >> $GITHUB_ENV
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}_${{ env.LINUX_BUILD_NAME }}
           path: ./Build/${{ env.LINUX_BUILD_NAME }}
@@ -84,11 +84,11 @@ jobs:
           unity-editor -nographics -logFile /dev/stdout -manualLicenseFile UnityLicenseFile.ulf -quit | echo "Activation finished"
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache Library
         id: cache-library
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: Library
           key: Library-2020.3.11-windows
@@ -98,7 +98,7 @@ jobs:
           make windows UNITY_EXECUTABLE=unity-editor
           echo "WINDOWS_BUILD_NAME=Windows" >> $GITHUB_ENV
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}_${{ env.WINDOWS_BUILD_NAME }}
           path: ./Build/${{ env.WINDOWS_BUILD_NAME }}
@@ -131,11 +131,11 @@ jobs:
           unity-editor -nographics -logFile /dev/stdout -manualLicenseFile UnityLicenseFile.ulf -quit | echo "Activation finished"
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache Library
         id: cache-library
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: Library
           key: Library-2020.3.11-webgl
@@ -145,7 +145,7 @@ jobs:
           make webgl UNITY_EXECUTABLE=unity-editor
           echo "WEB_BUILD_NAME=Web" >> $GITHUB_ENV
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}_${{ env.WEB_BUILD_NAME }}
           path: ./Build/${{ env.WEB_BUILD_NAME }}
@@ -178,11 +178,11 @@ jobs:
           unity-editor -nographics -logFile /dev/stdout -manualLicenseFile UnityLicenseFile.ulf -quit | echo "Activation finished"
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache Library
         id: cache-library
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: Library
           key: Library-2020.3.11-android
@@ -195,7 +195,7 @@ jobs:
           export ANDROID_BUILD_FILENAME=$(ls Build/Android/*.apk | sed -e 's/Build\/Android\///')
           echo "ANDROID_BUILD_FILENAME=$ANDROID_BUILD_FILENAME" >> $GITHUB_ENV
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}_${{ env.ANDROID_BUILD_FILENAME }}
           path: ./Build/${{ env.ANDROID_BUILD_PATH }}
